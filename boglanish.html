@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biz Bilan Bog'lanish - Furni.UZ</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .contact-page {
+      padding: 50px 0 80px;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 35px;
+      margin-top: 30px;
+    }
+    .contact-info-card {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+      color: white;
+      padding: 35px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+    }
+    .contact-info-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--accent-cyan);
+    }
+    .contact-item-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(65, 201, 226, 0.2);
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .contact-form-card {
+      background: var(--white);
+      padding: 35px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+    }
+    .contact-form-card h3 {
+      font-size: 1.4rem;
+      color: var(--primary-dark);
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+      font-family: inherit;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      border-color: var(--accent-light);
+    }
+    @media (max-width: 800px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container topbar-content">
+      <div class="topbar-info">
+        <div class="topbar-item"><i class="fa-solid fa-phone"></i><span>+998 (71) 200-44-88</span></div>
+        <div class="topbar-item"><i class="fa-solid fa-location-dot"></i><span>Toshkent sh., Bunyodkor ko'chasi 42-uy</span></div>
+      </div>
+      <div class="topbar-links">
+        <a href="index.html">Bosh sahifa</a>
+        <a href="tex-yordam.html">Texnik yordam</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-couch"></i></div>
+        <div>Furni<span>.UZ</span></div>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Bosh sahifa</a>
+        <a href="filtr.html" class="nav-link"><i class="fa-solid fa-sliders"></i> Filtr & Katalog</a>
+        <a href="sevimlilar.html" class="nav-link"><i class="fa-solid fa-heart"></i> Sevimlilar</a>
+        <a href="boglanish.html" class="nav-link active"><i class="fa-solid fa-phone-volume"></i> Bog'lanish</a>
+        <a href="tex-yordam.html" class="nav-link"><i class="fa-solid fa-circle-question"></i> Tex-yordam</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" onclick="toggleTheme()" title="Tungi rejimni yoqish/o'chirish">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="sevimlilar.html" class="fav-btn" title="Yoqtirgan mebellaringiz">
+          <i class="fa-solid fa-heart"></i>
+          <span>Sevimlilar</span>
+          <span class="fav-count" id="favBadge">0</span>
+        </a>
+        <a href="savat.html" class="cart-btn">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Savat</span>
+          <span class="cart-count" id="cartBadge">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Bog'lanish Sahifasi -->
+  <div class="container contact-page">
+    <div class="section-header" style="text-align: left; margin-bottom: 20px;">
+      <span class="section-tag">Aloqa</span>
+      <h2 class="section-title">Biz Bilan <span>Bog'laning</span></h2>
+      <p class="section-desc">Mebellarni tanlash, buyurtma qilish va o'lchamlarni aniqlash bo'yicha mutaxassislarimiz bilan maslahatlashing.</p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Aloqa ma'lumotlari -->
+      <div class="contact-info-card">
+        <h3>Furni.UZ Aloqa Markazi</h3>
+        <p style="color: #cbd5e1; margin-bottom: 25px; font-size: 0.95rem;">Biz mijozlarimizga xonadon dizayni va mebel tanlovida bepul maslahat beramiz.</p>
+
+        <div class="contact-item-row">
+          <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+          <div>
+            <h4 style="font-size: 1rem;">Telefon raqamlarimiz:</h4>
+            <p style="color: #cbd5e1; font-size: 0.9rem; margin-top: 3px;">+998 (71) 200-44-88 (Ko'p tarmoqli)</p>
+            <p style="color: #cbd5e1; font-size: 0.9rem;">+998 (90) 123-45-67 (Telegram & Qo'ng'iroq)</p>
+          </div>
+        </div>
+
+        <div class="contact-item-row">
+          <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <h4 style="font-size: 1rem;">Asosiy Ko'rgazma Zali (Showroom):</h4>
+            <p style="color: #cbd5e1; font-size: 0.9rem; margin-top: 3px;">Toshkent shahar, Chilonzor tumani, Bunyodkor ko'chasi 42-uy (Mo'ljal: Mirzo Ulug'bek metrosi yaqinida)</p>
+          </div>
+        </div>
+
+        <div class="contact-item-row">
+          <div class="contact-icon"><i class="fa-solid fa-clock"></i></div>
+          <div>
+            <h4 style="font-size: 1rem;">Ish tartibi:</h4>
+            <p style="color: #cbd5e1; font-size: 0.9rem; margin-top: 3px;">Dushanba - Yakshanba: 09:00 dan 21:00 gacha (Dam olish kunlarisiz)</p>
+          </div>
+        </div>
+
+        <div class="contact-item-row">
+          <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div>
+            <h4 style="font-size: 1rem;">Elektron pochta:</h4>
+            <p style="color: #cbd5e1; font-size: 0.9rem; margin-top: 3px;">info@furni.uz | sales@furni.uz</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Xabar yuborish formasi -->
+      <div class="contact-form-card">
+        <h3>Mebel bo'yicha maslahat olish</h3>
+        <form onsubmit="handleContactSubmit(event)">
+          <div class="form-group">
+            <label>Ismingiz:</label>
+            <input type="text" id="contactName" required placeholder="Masalan: Jasur">
+          </div>
+          <div class="form-group">
+            <label>Telefon raqamingiz:</label>
+            <input type="tel" id="contactPhone" required placeholder="+998 (90) 123-45-67">
+          </div>
+          <div class="form-group">
+            <label>Sizni qiziqtirgan mebel toifasi:</label>
+            <select id="contactCategory">
+              <option value="Mehmonxona divanlari">Mehmonxona divanlari</option>
+              <option value="Yotoqxona to'plami">Yotoqxona to'plami</option>
+              <option value="Oshxona garnituri">Oshxona garnituri</option>
+              <option value="Ofis mebeli">Ofis mebeli</option>
+              <option value="Maxsus buyurtma mebel">Maxsus buyurtma mebel</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Savol yoki talablaringiz:</label>
+            <textarea id="contactMessage" rows="4" placeholder="Mebel o'lchamlari yoki material bo'yicha qiziqtirgan savolingizni yozing..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+            <i class="fa-solid fa-paper-plane"></i> Xabarni yuborish
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Furni.UZ — Barcha huquqlar himoyalangan.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('contactName').value;
+      alert(`Rahmat, ${name}! Xabaringiz yuborildi. Mutaxassislarimiz 15 daqiqa ichida siz bilan bog'lanishadi.`);
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>

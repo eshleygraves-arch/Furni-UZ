@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savat - Furni.UZ</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .cart-page-wrap {
+      padding: 50px 0 80px;
+    }
+    .cart-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+      margin-top: 25px;
+    }
+    .cart-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 25px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+    .cart-item-img {
+      width: 90px;
+      height: 75px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+    }
+    .cart-item-info {
+      flex: 1;
+    }
+    .cart-item-title {
+      font-weight: 700;
+      color: var(--primary-dark);
+      font-size: 1rem;
+    }
+    .cart-item-price {
+      color: var(--accent-light);
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-top: 4px;
+    }
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .qty-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      background: var(--soft-blue);
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .qty-btn:hover {
+      background: var(--accent-light);
+      color: white;
+    }
+    .remove-btn {
+      color: #ef4444;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      padding: 6px;
+    }
+    .remove-btn:hover {
+      opacity: 0.7;
+    }
+    .order-summary {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 25px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      height: fit-content;
+    }
+    .order-summary h3 {
+      font-size: 1.3rem;
+      color: var(--primary-dark);
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--soft-blue);
+      padding-bottom: 10px;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 2px solid var(--border-color);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+    .form-group {
+      margin-top: 15px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--primary-dark);
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      outline: none;
+      font-size: 0.9rem;
+    }
+    .form-group input:focus {
+      border-color: var(--accent-light);
+    }
+    .empty-cart-box {
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .empty-cart-box i {
+      font-size: 4rem;
+      color: #cbd5e1;
+      margin-bottom: 15px;
+    }
+    @media (max-width: 768px) {
+      .cart-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container topbar-content">
+      <div class="topbar-info">
+        <div class="topbar-item"><i class="fa-solid fa-phone"></i><span>+998 (71) 200-44-88</span></div>
+        <div class="topbar-item"><i class="fa-solid fa-truck-fast"></i><span>O'zbekiston bo'ylab bepul yetkazib berish mavjud!</span></div>
+      </div>
+      <div class="topbar-links">
+        <a href="index.html">Bosh sahifa</a>
+        <a href="boglanish.html">Aloqa</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-couch"></i></div>
+        <div>Furni<span>.UZ</span></div>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Bosh sahifa</a>
+        <a href="filtr.html" class="nav-link"><i class="fa-solid fa-sliders"></i> Filtr & Katalog</a>
+        <a href="sevimlilar.html" class="nav-link"><i class="fa-solid fa-heart"></i> Sevimlilar</a>
+        <a href="boglanish.html" class="nav-link"><i class="fa-solid fa-phone-volume"></i> Bog'lanish</a>
+        <a href="tex-yordam.html" class="nav-link"><i class="fa-solid fa-circle-question"></i> Tex-yordam</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" onclick="toggleTheme()" title="Tungi rejimni yoqish/o'chirish">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="sevimlilar.html" class="fav-btn" title="Yoqtirgan mebellaringiz">
+          <i class="fa-solid fa-heart"></i>
+          <span>Sevimlilar</span>
+          <span class="fav-count" id="favBadge">0</span>
+        </a>
+        <a href="savat.html" class="cart-btn">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Savat</span>
+          <span class="cart-count" id="cartBadge">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Savat asosiy qismi -->
+  <div class="container cart-page-wrap">
+    <div class="section-header" style="text-align: left; margin-bottom: 25px;">
+      <span class="section-tag">Xaridlaringiz</span>
+      <h2 class="section-title">Sizning <span>Savatingiz</span></h2>
+    </div>
+
+    <div class="cart-grid">
+      <!-- Mahsulotlar ro'yxati -->
+      <div class="cart-card">
+        <div id="cartItemsContainer">
+          <!-- JS orqali to'ldiriladi -->
+        </div>
+      </div>
+
+      <!-- Buyurtmani rasmiylashtirish -->
+      <div class="order-summary">
+        <h3>Buyurtma hisobi</h3>
+        <div class="summary-row">
+          <span>Mahsulotlar soni:</span>
+          <span id="summaryTotalItems">0 dona</span>
+        </div>
+        <div class="summary-row">
+          <span>Yetkazib berish:</span>
+          <span style="color: #10b981; font-weight: 700;">Bepul (Aksiya)</span>
+        </div>
+        <div class="summary-row">
+          <span>O'rnatish:</span>
+          <span style="color: #10b981; font-weight: 700;">Bepul</span>
+        </div>
+        <div class="summary-total">
+          <span>Jami to'lov:</span>
+          <span id="summaryTotalPrice" style="color: var(--accent-light);">0 so'm</span>
+        </div>
+
+        <div style="margin-top: 25px;">
+          <h4 style="font-size: 1rem; color: var(--primary-dark); margin-bottom: 10px;">Buyurtma beruvchi ma'lumotlari:</h4>
+          <div class="form-group">
+            <label>Ism-familiyangiz:</label>
+            <input type="text" id="custName" placeholder="Masalan: Azizbek Karimov">
+          </div>
+          <div class="form-group">
+            <label>Telefon raqamingiz:</label>
+            <input type="tel" id="custPhone" placeholder="+998 (90) 123-45-67">
+          </div>
+          <div class="form-group">
+            <label>Yetkazib berish manzili:</label>
+            <input type="text" id="custAddress" placeholder="Shahar, ko'cha, xonadon">
+          </div>
+          <button class="btn-primary" style="width: 100%; margin-top: 20px; justify-content: center;" onclick="submitOrder()">
+            <i class="fa-solid fa-check-circle"></i> Buyurtmani tasdiqlash
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Furni.UZ — Barcha huquqlar himoyalangan.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    function renderCartPage() {
+      const container = document.getElementById('cartItemsContainer');
+      const totalItemsEl = document.getElementById('summaryTotalItems');
+      const totalPriceEl = document.getElementById('summaryTotalPrice');
+
+      if (!container) return;
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="empty-cart-box">
+            <i class="fa-solid fa-cart-arrow-down"></i>
+            <h3>Savatingiz hozircha bo'sh</h3>
+            <p style="color: #64748b; margin-top: 8px; margin-bottom: 20px;">Uyingiz uchun qulay mebellarni tanlang va xarid qiling!</p>
+            <a href="index.html#catalog" class="btn-primary"><i class="fa-solid fa-arrow-left"></i> Katalogni ko'rish</a>
+          </div>
+        `;
+        totalItemsEl.innerText = "0 dona";
+        totalPriceEl.innerText = "0 so'm";
+        return;
+      }
+
+      let totalCount = 0;
+      let totalPrice = 0;
+      let html = '';
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * (item.quantity || 1);
+        totalCount += (item.quantity || 1);
+        totalPrice += itemTotal;
+
+        html += `
+          <div class="cart-item">
+            <img src="${item.img}" alt="${item.name}" class="cart-item-img">
+            <div class="cart-item-info">
+              <div class="cart-item-title">${item.name}</div>
+              <div class="cart-item-price">${formatPrice(item.price)}</div>
+            </div>
+            <div class="qty-controls">
+              <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
+              <span style="font-weight: 700; min-width: 20px; text-align: center;">${item.quantity || 1}</span>
+              <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
+            </div>
+            <div style="font-weight: 800; min-width: 110px; text-align: right; color: var(--primary-dark);">
+              ${formatPrice(itemTotal)}
+            </div>
+            <button class="remove-btn" onclick="removeCartItem(${index})" title="O'chirish">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+      totalItemsEl.innerText = totalCount + " dona";
+      totalPriceEl.innerText = formatPrice(totalPrice);
+    }
+
+    function changeQty(index, change) {
+      if (cart[index]) {
+        cart[index].quantity = (cart[index].quantity || 1) + change;
+        if (cart[index].quantity <= 0) {
+          cart.splice(index, 1);
+        }
+        localStorage.setItem('furni_cart', JSON.stringify(cart));
+        updateCartCount();
+        renderCartPage();
+      }
+    }
+
+    function removeCartItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('furni_cart', JSON.stringify(cart));
+      updateCartCount();
+      renderCartPage();
+    }
+
+    function submitOrder() {
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const addr = document.getElementById('custAddress').value.trim();
+
+      if (cart.length === 0) {
+        alert("Savatingiz bo'sh! Iltimos, mebel tanlang.");
+        return;
+      }
+      if (!name || !phone) {
+        alert("Iltimos, ism va telefon raqamingizni kiriting!");
+        return;
+      }
+
+      alert(`Rahmat, ${name}! Buyurtmangiz qabul qilindi. Tez orada operatorlarimiz ${phone} raqamiga aloqaga chiqishadi.`);
+      cart = [];
+      localStorage.setItem('furni_cart', JSON.stringify(cart));
+      updateCartCount();
+      renderCartPage();
+    }
+
+    document.addEventListener('DOMContentLoaded', renderCartPage);
+  </script>
+</body>
+</html>

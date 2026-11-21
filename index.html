@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Furni.UZ - Zamonaviy va Sifatli Mebellar Do'koni</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome Ikonkalari -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- TOPBAR (Saytning yuqori qismi) -->
+  <div class="topbar">
+    <div class="container topbar-content">
+      <div class="topbar-info">
+        <div class="topbar-item">
+          <i class="fa-solid fa-phone"></i>
+          <span>+998 (71) 200-44-88 | +998 (90) 123-45-67</span>
+        </div>
+        <div class="topbar-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>Toshkent sh., Bunyodkor ko'chasi 42-uy</span>
+        </div>
+        <div class="topbar-item">
+          <i class="fa-solid fa-truck-fast"></i>
+          <span>O'zbekiston bo'ylab tezkor yetkazib berish va bepul o'rnatish!</span>
+        </div>
+      </div>
+      <div class="topbar-links">
+        <a href="tex-yordam.html"><i class="fa-solid fa-headset"></i> Qo'llab-quvvatlash</a>
+        <a href="boglanish.html"><i class="fa-solid fa-envelope"></i> Aloqa</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER / NAVBAR (Toza, keng va Dark Mode bilan) -->
+  <header class="header">
+    <div class="container navbar">
+      <!-- Logo: Och ko'k va to'q ko'k uyg'unligi -->
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <i class="fa-solid fa-couch"></i>
+        </div>
+        <div>Furni<span>.UZ</span></div>
+      </a>
+
+      <!-- Navigatsiya menyusi -->
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link active"><i class="fa-solid fa-house"></i> Bosh sahifa</a>
+        <a href="filtr.html" class="nav-link"><i class="fa-solid fa-sliders"></i> Filtr & Katalog</a>
+        <a href="boglanish.html" class="nav-link"><i class="fa-solid fa-phone-volume"></i> Bog'lanish</a>
+        <a href="tex-yordam.html" class="nav-link"><i class="fa-solid fa-circle-question"></i> Tex-yordam</a>
+      </nav>
+
+      <!-- Harakatlar: Dark Mode, Sevimlilar (Like) va Savat tugmalari -->
+      <div class="nav-actions">
+        <!-- Dark Mode (Tungi rejim) Tugmasi -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Tungi rejimni yoqish/o'chirish">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <!-- Sevimlilar (Yoqtirilganlar) tugmasi -->
+        <button class="fav-btn" onclick="openFavoritesModal()" title="Yoqtirgan mebellaringiz">
+          <i class="fa-solid fa-heart"></i>
+          <span>Sevimlilar</span>
+          <span class="fav-count" id="favBadge">0</span>
+        </button>
+
+        <!-- Savat tugmasi -->
+        <a href="savat.html" class="cart-btn" id="openCartBtn" title="Xaridlar savati">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Savat</span>
+          <span class="cart-count" id="cartBadge">0</span>
+        </a>
+        
+        <button class="mobile-toggle" id="mobileMenuBtn">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION (To'q ko'k fon, och ko'k yorqin aksentlar) -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text-wrap">
+        <div class="hero-badge">
+          <i class="fa-solid fa-certificate"></i> Yangi mavsum kolleksiyasi - 2026
+        </div>
+        <h1 class="hero-title">
+          Uyingizga qulaylik va <span>go'zallik</span> bag'ishlang
+        </h1>
+        <p class="hero-desc">
+          <strong>Furni.UZ</strong> — Italiya, Turkiya va O'zbekistonning eng sara fabrikalaridan tabiiy eman yog'ochi, mustahkam karkas va nafis matoli mebellarning boy tanlovi.
+        </p>
+        <div class="hero-buttons">
+          <a href="#catalog" class="btn-primary">
+            <i class="fa-solid fa-bag-shopping"></i> Katalogni ko'rish
+          </a>
+          <a href="#promo" class="btn-outline">
+            <i class="fa-solid fa-percent"></i> Qaynoq Chegirmalar
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <h3>500+</h3>
+            <p>Mebel turlari</p>
+          </div>
+          <div class="stat-item">
+            <h3>15 000+</h3>
+            <p>Mamnun mijozlar</p>
+          </div>
+          <div class="stat-item">
+            <h3>3 Yil</h3>
+            <p>Rasmiy kafolat</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image-wrap">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=80" alt="Furni.UZ Premium Divan" class="hero-main-img">
+        <div class="hero-floating-card">
+          <div class="floating-icon">
+            <i class="fa-solid fa-shield-heart"></i>
+          </div>
+          <div class="floating-text">
+            <h4>100% Tabiiy Material</h4>
+            <p>Eman, qayin va ekologik matolar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- XIZMATLAR VA AFZALLIKLAR -->
+  <div class="container">
+    <section class="features-section">
+      <div class="features-grid">
+        <div class="feature-box">
+          <div class="feature-icon"><i class="fa-solid fa-truck-ramp-box"></i></div>
+          <div class="feature-text">
+            <h4>Tezkor yetkazish</h4>
+            <p>24 soat ichida butun respublika bo'ylab</p>
+          </div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+          <div class="feature-text">
+            <h4>Bepul o'rnatib berish</h4>
+            <p>Tajribali ustalarimiz tomonidan</p>
+          </div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="feature-text">
+            <h4>3 yillik kafolat</h4>
+            <p>Har bir buyum uchun kafolat qog'ozi</p>
+          </div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon"><i class="fa-solid fa-credit-card"></i></div>
+          <div class="feature-text">
+            <h4>Qulay bo'lib to'lash</h4>
+            <p>0% ustama bilan 12 oygacha muddatli to'lov</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- MEBELLAR KATALOGI (KO'P RASMLAR, NARX, NIMA QILINGAN, QATTIKILIGI, LIKE TIZIMI) -->
+  <section class="catalog-section" id="catalog">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Eng Sara Tanlov</span>
+        <h2 class="section-title">Bizning <span>Mebellar Katalogi</span></h2>
+        <p class="section-desc">Har bir mebelning narxi, nimadan qilingani (materiali) va qayerdanligi aniq ko'rsatilgan. Yoqqan mebellarga ❤️ (Like) bosing!</p>
+      </div>
+
+      <!-- Katta Qidiruv Paneli (Katalog uchun keng va qulay) -->
+      <div class="catalog-search-bar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="catalogSearchInput" placeholder="Masalan: Chesterfield, Divan, Krovat, Eman stoli, Turkiya, Mramor...">
+        <button type="button" id="catalogSearchBtn" class="catalog-search-btn">
+          <i class="fa-solid fa-magnifying-glass"></i> Qidirish
+        </button>
+      </div>
+
+      <!-- Kategoriya bo'yicha filter tugmalari -->
+      <div class="catalog-filters">
+        <button class="filter-btn active" data-category="all"><i class="fa-solid fa-border-all"></i> Barcha mebellar</button>
+        <button class="filter-btn" data-category="mehmonxona"><i class="fa-solid fa-couch"></i> Mehmonxona</button>
+        <button class="filter-btn" data-category="yotoqxona"><i class="fa-solid fa-bed"></i> Yotoqxona</button>
+        <button class="filter-btn" data-category="oshxona"><i class="fa-solid fa-utensils"></i> Oshxona</button>
+        <button class="filter-btn" data-category="ofis"><i class="fa-solid fa-briefcase"></i> Ofis mebellari</button>
+        <button class="filter-btn" data-category="bolalar"><i class="fa-solid fa-child"></i> Bolalar xonasi</button>
+      </div>
+
+      <!-- Mahsulotlar to'plami (JavaScript orqali avtomatik render qilinadi) -->
+      <div class="products-grid" id="productsGrid">
+        <!-- main.js renderProducts() orqali dinamik yuklanadi -->
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMO AKSIYA BANNERI (To'q ko'k va och ko'k ranglarda) -->
+  <section class="promo-section" id="promo">
+    <div class="container">
+      <div class="promo-card">
+        <div class="promo-content">
+          <span class="hero-badge"><i class="fa-solid fa-gift"></i> Maxsus Aksiya</span>
+          <h2>Xonadoningiz uchun <span>to'liq mebel</span> to'plamini oling!</h2>
+          <p>Yotoqxona, mehmonxona va oshxona mebellariga bir vaqtda buyurtma bering va umumiy summaga <strong>20% lik maxsus chegirma</strong> hamda Toshkent shahri bo'ylab bepul o'rnatish xizmatiga ega bo'ling.</p>
+          <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+            <a href="boglanish.html" class="btn-primary"><i class="fa-solid fa-headset"></i> Maslahatchi bilan bog'lanish</a>
+            <a href="filtr.html" class="btn-outline"><i class="fa-solid fa-tags"></i> Barcha mebellar filtri</a>
+          </div>
+        </div>
+        <div class="promo-img-wrap">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80" alt="Furni.UZ Aksiya">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEZ-TEZ BERILADIGAN SAVOLLAR (FAQ) -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Yordam & Ma'lumot</span>
+        <h2 class="section-title">Ko'p Beriladigan <span>Savollar</span></h2>
+        <p class="section-desc">Mebellarni xarid qilish, yetkazish va to'lov shartlari haqida</p>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h4><i class="fa-solid fa-circle-question"></i> Mebellarni yetkazib berish qancha vaqt oladi?</h4>
+          <p>Toshkent shahri ichida tayyor mahsulotlar 24 soat ichida yetkaziladi va mutaxassislarimiz tomonidan o'rnatib beriladi. Viloyatlarga esa 2-4 ish kuni davomida yetkaziladi.</p>
+        </div>
+        <div class="faq-item">
+          <h4><i class="fa-solid fa-circle-question"></i> Mebellar materialiga kafolat bormi?</h4>
+          <p>Ha! Biz barcha mebellarimizga 3 yilgacha rasmiy kafolat beramiz. Yog'och sifati, prujinalar va mexanizmlar tekshirilgan va xalqaro sifat sertifikatiga ega.</p>
+        </div>
+        <div class="faq-item">
+          <h4><i class="fa-solid fa-circle-question"></i> O'zbekistonda ishlab chiqarilgan mebellar bormi?</h4>
+          <p>Ha, bizda Toshkent va Samarqanddagi zamonaviy korxonalarimizda mahalliy ishlab chiqarilgan sifatli mebellar hamda Turkiya, Italiya va Rossiyadan keltirilgan import modellar mavjud.</p>
+        </div>
+        <div class="faq-item">
+          <h4><i class="fa-solid fa-circle-question"></i> Muddatli to'lov (rassrochka) bormi?</h4>
+          <p>Ha, Uzum Nasiya, Anorbank, ZoodPay yoki boshqa qulay tizimlar orqali boshlang'ich to'lovsiz, 12 oygacha bo'lib to'lash imkoniyati mavjud.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (To'q ko'k uslubda) -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <i class="fa-solid fa-couch"></i> Furni<span>.UZ</span>
+        </div>
+        <p>Furni.UZ — zamonaviy dizayn, qulaylik va mustahkam sifat uyg'unligi. Uyingiz va ofisingiz uchun xalqaro standartdagi eng sara mebellar.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+          <a href="#" class="social-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-link" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" class="social-link" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Bo'limlar</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Bosh sahifa</a></li>
+          <li><a href="filtr.html">Mebellar filtri</a></li>
+          <li><a href="sevimlilar.html">Sevimlilar (❤️ Like)</a></li>
+          <li><a href="savat.html">Savat</a></li>
+          <li><a href="tex-yordam.html">Texnik yordam</a></li>
+          <li><a href="boglanish.html">Biz bilan aloqa</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Mebel Toifalari</h4>
+        <ul class="footer-links">
+          <li><a href="#catalog">Mehmonxona divanlari</a></li>
+          <li><a href="#catalog">Yotoqxona to'plamlari</a></li>
+          <li><a href="#catalog">Oshxona garniturlari</a></li>
+          <li><a href="#catalog">Ofis mebellari</a></li>
+          <li><a href="#catalog">Bolalar xonasi</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Bog'lanish</h4>
+        <ul class="footer-contact">
+          <li>
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Toshkent sh., Bunyodkor ko'chasi 42-uy</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-phone"></i>
+            <span>+998 (71) 200-44-88</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-envelope"></i>
+            <span>info@furni.uz</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-clock"></i>
+            <span>Har kuni: 09:00 dan 21:00 gacha</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Furni.UZ — Barcha huquqlar himoyalangan. O'zbekistonning mebellar portali.</p>
+    </div>
+  </footer>
+
+  <!-- MAHSULOTNING BATAFSIL MA'LUMOT MODAL OYNASI (KO'P RASMLAR GALEREYASI BILAN) -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeProductModal()"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body">
+        
+        <!-- Chap qism: Katta rasm + slayder + kichik rasmchalar (Thumbnails) -->
+        <div class="modal-gallery">
+          <div class="modal-main-img-box">
+            <button class="gallery-nav-btn prev" onclick="prevModalImage()" title="Oldingi rasm">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <img src="" id="modalImg" alt="Mebel rasmi" class="modal-main-img">
+            <button class="gallery-nav-btn next" onclick="nextModalImage()" title="Keyingi rasm">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+          <!-- Kichik rasmlar qatori -->
+          <div class="modal-thumbnails" id="modalThumbnails">
+            <!-- JS orqali to'ldiriladi -->
+          </div>
+        </div>
+
+        <!-- O'ng qism: Tafsilotlar -->
+        <div class="modal-details">
+          <span class="product-category" id="modalCategory">Kategoriya</span>
+          <h3 id="modalTitle">Mebel Nomi</h3>
+          <div class="modal-price" id="modalPrice">0 so'm</div>
+          
+          <div class="modal-specs-box">
+            <div>
+              <strong style="color: var(--text-main);"><i class="fa-solid fa-hammer"></i> Nima qilingan (Material):</strong>
+              <p id="modalMaterial" style="margin-top: 4px; color: var(--text-muted); font-size: 0.9rem;"></p>
+            </div>
+            <div style="margin-top: 10px;">
+              <strong style="color: var(--text-main);"><i class="fa-solid fa-earth-americas"></i> Qayerdanligi (Kelib chiqishi):</strong>
+              <p id="modalOrigin" style="margin-top: 4px; color: var(--text-muted); font-size: 0.9rem;"></p>
+            </div>
+            <div style="margin-top: 10px;">
+              <strong style="color: var(--text-main);"><i class="fa-solid fa-shield"></i> Rasmiy Kafolat:</strong>
+              <p style="margin-top: 4px; color: var(--text-muted); font-size: 0.9rem;">3 yil to'liq servis va material kafolati</p>
+            </div>
+          </div>
+
+          <button class="btn-primary" id="modalAddToCartBtn" style="width: 100%; justify-content: center;">
+            <i class="fa-solid fa-cart-plus"></i> Savatga qo'shish
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEVIMLILAR (FAVORITES / LIKE) MODAL OYNASI -->
+  <div class="modal-overlay" id="favoritesModal">
+    <div class="modal-content" style="max-width: 600px;">
+      <button class="modal-close" onclick="closeFavoritesModal()"><i class="fa-solid fa-xmark"></i></button>
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; border-bottom: 2px solid var(--border-color); padding-bottom: 12px;">
+        <i class="fa-solid fa-heart" style="color: #ef4444; font-size: 1.5rem;"></i>
+        <h3 style="color: var(--text-main); font-size: 1.3rem;">Sizga Yoqqan Mebellar (Sevimlilar)</h3>
+      </div>
+      
+      <div id="favItemsContainer" class="fav-modal-list">
+        <!-- JS orqali to'ldiriladi -->
+      </div>
+
+      <div style="display: flex; justify-content: space-between; gap: 15px; margin-top: 15px; border-top: 1px solid var(--border-color); padding-top: 15px;">
+        <button class="btn-outline" style="color: var(--text-main); border-color: var(--border-color);" onclick="closeFavoritesModal()">Yopish</button>
+        <a href="sevimlilar.html" class="btn-primary"><i class="fa-solid fa-expand"></i> To'liq sahifada ko'rish</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- BILDIRISHOVCHI TOAST -->
+  <div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMsg">Amal bajarildi!</span>
+  </div>
+
+  <!-- JAVASCRIPT KODI -->
+  <script src="main.js"></script>
+</body>
+</html>

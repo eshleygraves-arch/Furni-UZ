@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sevimlilar (Yoqtirgan mebellaringiz) - Furni.UZ</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .fav-page-wrap {
+      padding: 50px 0 80px;
+    }
+    .fav-header-area {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .empty-fav-box {
+      text-align: center;
+      padding: 70px 20px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+    }
+    .empty-fav-box i {
+      font-size: 4rem;
+      color: #cbd5e1;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container topbar-content">
+      <div class="topbar-info">
+        <div class="topbar-item"><i class="fa-solid fa-phone"></i><span>+998 (71) 200-44-88</span></div>
+        <div class="topbar-item"><i class="fa-solid fa-heart"></i><span>Siz saqlagan sara mebellar to'plami</span></div>
+      </div>
+      <div class="topbar-links">
+        <a href="index.html">Bosh sahifa</a>
+        <a href="boglanish.html">Aloqa</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-couch"></i></div>
+        <div>Furni<span>.UZ</span></div>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Bosh sahifa</a>
+        <a href="filtr.html" class="nav-link"><i class="fa-solid fa-sliders"></i> Filtr & Katalog</a>
+        <a href="sevimlilar.html" class="nav-link active"><i class="fa-solid fa-heart"></i> Sevimlilar</a>
+        <a href="boglanish.html" class="nav-link"><i class="fa-solid fa-phone-volume"></i> Bog'lanish</a>
+        <a href="tex-yordam.html" class="nav-link"><i class="fa-solid fa-circle-question"></i> Tex-yordam</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" onclick="toggleTheme()" title="Tungi rejimni yoqish/o'chirish">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="sevimlilar.html" class="fav-btn">
+          <i class="fa-solid fa-heart"></i>
+          <span>Sevimlilar</span>
+          <span class="fav-count" id="favBadge">0</span>
+        </a>
+        <a href="savat.html" class="cart-btn">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Savat</span>
+          <span class="cart-count" id="cartBadge">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sevimlilar sahifasi asosiy qismi -->
+  <div class="container fav-page-wrap">
+    <div class="fav-header-area">
+      <div>
+        <span class="section-tag" style="background: #fee2e2; color: #b91c1c;">Saralanganlar</span>
+        <h2 class="section-title">Sizga Yoqqan <span>Mebellar (Sevimlilar)</span></h2>
+        <p class="section-desc">O'zingizga yoqqan mebellarni shu yerdan to'g'ridan-to'g'ri solishtirishingiz va savatga qo'shishingiz mumkin.</p>
+      </div>
+      <div>
+        <button class="btn-outline" onclick="clearAllFavorites()" style="color: #ef4444; border-color: #fca5a5;">
+          <i class="fa-solid fa-trash-can"></i> Hammasini tozalash
+        </button>
+      </div>
+    </div>
+
+    <!-- Sevimli mebellar tarmog'i -->
+    <div class="products-grid" id="favoritesPageGrid">
+      <!-- JS orqali to'ldiriladi -->
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Furni.UZ — Sevimlilar ro'yxati.</p>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMsg">Amal bajarildi!</span>
+  </div>
+
+  <script src="main.js"></script>
+  <script>
+    function renderFavoritesPage() {
+      const container = document.getElementById('favoritesPageGrid');
+      if (!container) return;
+
+      if (favorites.length === 0) {
+        container.innerHTML = `
+          <div class="empty-fav-box" style="grid-column: 1/-1;">
+            <i class="fa-regular fa-heart"></i>
+            <h3>Sizda hali yoqtirgan (sevimli) mebellar yo'q</h3>
+            <p style="color: #64748b; margin-top: 8px; margin-bottom: 25px;">Katalogimizdagi mebellarga ❤️ (Like) bosing va ular bu yerda saqlanadi!</p>
+            <a href="index.html#catalog" class="btn-primary"><i class="fa-solid fa-couch"></i> Mebellar katalogiga o'tish</a>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      favorites.forEach(p => {
+        html += `
+          <div class="product-card">
+            <div class="product-img-wrapper">
+              <span class="badge-tag badge-hot">Yoqtirilgan ❤️</span>
+              <div class="product-top-actions">
+                <button class="like-btn liked" onclick="removeFromFavPage(${p.id})" title="Sevimlilardan o'chirish">
+                  <i class="fa-solid fa-heart"></i>
+                </button>
+              </div>
+              <img src="${p.img}" alt="${p.name}" class="product-img">
+            </div>
+
+            <div class="product-body">
+              <h3 class="product-title">${p.name}</h3>
+              
+              <div class="product-specs">
+                <div class="spec-item">
+                  <i class="fa-solid fa-hammer"></i>
+                  <div><span class="spec-label">Nima qilingan:</span> <span class="spec-val">${p.material}</span></div>
+                </div>
+                <div class="spec-item">
+                  <i class="fa-solid fa-earth-americas"></i>
+                  <div><span class="spec-label">Qayerdanligi:</span> <span class="spec-val">${p.origin}</span></div>
+                </div>
+              </div>
+
+              <div class="product-footer">
+                <div class="price-wrap">
+                  <span class="old-price">${formatPrice(p.oldPrice || p.price * 1.15)}</span>
+                  <span class="current-price">${formatPrice(p.price)}</span>
+                </div>
+                <button class="add-cart-btn" onclick="addToCart('${p.name}', ${p.price}, '${p.img}')" title="Savatga qo'shish">
+                  <i class="fa-solid fa-cart-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    function removeFromFavPage(id) {
+      toggleFavorite(id);
+      renderFavoritesPage();
+    }
+
+    function clearAllFavorites() {
+      if (favorites.length === 0) return;
+      if (confirm("Haqiqatan ham barcha sevimli mebellarni tozalamoqchimisiz?")) {
+        favorites = [];
+        localStorage.setItem('furni_favorites', JSON.stringify(favorites));
+        updateFavCount();
+        renderFavoritesPage();
+        showToast("Sevimlilar ro'yxati tozalandi.");
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderFavoritesPage();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mebellar Filtri & Katalog - Furni.UZ</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .filter-page-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 30px;
+      padding: 40px 0 70px;
+    }
+    .filter-sidebar {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      height: fit-content;
+    }
+    .filter-group {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .filter-group:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .filter-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .filter-title i {
+      color: var(--accent-light);
+    }
+    .filter-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: #334155;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+    .filter-option input[type="checkbox"], .filter-option input[type="radio"] {
+      accent-color: var(--accent-light);
+      width: 16px;
+      height: 16px;
+    }
+    @media (max-width: 900px) {
+      .filter-page-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container topbar-content">
+      <div class="topbar-info">
+        <div class="topbar-item"><i class="fa-solid fa-phone"></i><span>+998 (71) 200-44-88</span></div>
+        <div class="topbar-item"><i class="fa-solid fa-location-dot"></i><span>Toshkent sh., Bunyodkor ko'chasi 42-uy</span></div>
+      </div>
+      <div class="topbar-links">
+        <a href="index.html">Bosh sahifa</a>
+        <a href="boglanish.html">Aloqa</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-couch"></i></div>
+        <div>Furni<span>.UZ</span></div>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Bosh sahifa</a>
+        <a href="filtr.html" class="nav-link active"><i class="fa-solid fa-sliders"></i> Filtr & Katalog</a>
+        <a href="sevimlilar.html" class="nav-link"><i class="fa-solid fa-heart"></i> Sevimlilar</a>
+        <a href="boglanish.html" class="nav-link"><i class="fa-solid fa-phone-volume"></i> Bog'lanish</a>
+        <a href="tex-yordam.html" class="nav-link"><i class="fa-solid fa-circle-question"></i> Tex-yordam</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" onclick="toggleTheme()" title="Tungi rejimni yoqish/o'chirish">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="sevimlilar.html" class="fav-btn" title="Yoqtirgan mebellaringiz">
+          <i class="fa-solid fa-heart"></i>
+          <span>Sevimlilar</span>
+          <span class="fav-count" id="favBadge">0</span>
+        </a>
+        <a href="savat.html" class="cart-btn">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Savat</span>
+          <span class="cart-count" id="cartBadge">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Filter & Katalog Sahifasi -->
+  <div class="container">
+    <div class="filter-page-layout">
+      <!-- Yon Filtr Paneli -->
+      <aside class="filter-sidebar">
+        <div class="filter-group">
+          <h4 class="filter-title"><i class="fa-solid fa-layer-group"></i> Xona toifasi</h4>
+          <label class="filter-option"><input type="radio" name="cat" value="all" checked onchange="applyFilters()"> Hammasi</label>
+          <label class="filter-option"><input type="radio" name="cat" value="mehmonxona" onchange="applyFilters()"> Mehmonxona</label>
+          <label class="filter-option"><input type="radio" name="cat" value="yotoqxona" onchange="applyFilters()"> Yotoqxona</label>
+          <label class="filter-option"><input type="radio" name="cat" value="oshxona" onchange="applyFilters()"> Oshxona</label>
+          <label class="filter-option"><input type="radio" name="cat" value="ofis" onchange="applyFilters()"> Ofis mebellari</label>
+          <label class="filter-option"><input type="radio" name="cat" value="bolalar" onchange="applyFilters()"> Bolalar xonasi</label>
+        </div>
+
+        <div class="filter-group">
+          <h4 class="filter-title"><i class="fa-solid fa-earth-americas"></i> Qayerdanligi (Davlat)</h4>
+          <label class="filter-option"><input type="radio" name="origin" value="all" checked onchange="applyFilters()"> Barcha davlatlar</label>
+          <label class="filter-option"><input type="radio" name="origin" value="O'zbekiston" onchange="applyFilters()"> O'zbekiston (Mahalliy)</label>
+          <label class="filter-option"><input type="radio" name="origin" value="Turkiya" onchange="applyFilters()"> Turkiya (Import)</label>
+          <label class="filter-option"><input type="radio" name="origin" value="Italiya" onchange="applyFilters()"> Italiya (Premium)</label>
+          <label class="filter-option"><input type="radio" name="origin" value="Rossiya" onchange="applyFilters()"> Rossiya</label>
+          <label class="filter-option"><input type="radio" name="origin" value="Belarus" onchange="applyFilters()"> Belarus</label>
+        </div>
+
+        <div class="filter-group">
+          <h4 class="filter-title"><i class="fa-solid fa-tree"></i> Asosiy Material</h4>
+          <label class="filter-option"><input type="radio" name="material" value="all" checked onchange="applyFilters()"> Barcha materiallar</label>
+          <label class="filter-option"><input type="radio" name="material" value="eman" onchange="applyFilters()"> Eman yog'ochi</label>
+          <label class="filter-option"><input type="radio" name="material" value="qayin" onchange="applyFilters()"> Qayin yog'ochi</label>
+          <label class="filter-option"><input type="radio" name="material" value="mramor" onchange="applyFilters()"> Kvars / Mramor</label>
+          <label class="filter-option"><input type="radio" name="material" value="baxmal" onchange="applyFilters()"> Velur / Baxmal</label>
+        </div>
+
+        <button class="btn-primary" style="width: 100%; justify-content: center; margin-top: 10px;" onclick="resetFilters()">
+          <i class="fa-solid fa-rotate-left"></i> Filtrlarni tozalash
+        </button>
+      </aside>
+
+      <!-- Mahsulotlar ro'yxati -->
+      <main>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+          <h2 style="font-size: 1.6rem; color: var(--primary-dark);">Mavjud mebellar (<span id="resultsCount">0</span> ta)</h2>
+          <span style="font-size: 0.9rem; color: var(--text-muted);">Sifatli va qulay narxlarda</span>
+        </div>
+        
+        <div class="products-grid" id="filteredGrid">
+          <!-- JS orqali to'ldiriladi -->
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Furni.UZ — Mebellar filtri va katalogi.</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeProductModal()"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body">
+        <div class="modal-gallery">
+          <div class="modal-main-img-box">
+            <button class="gallery-nav-btn prev" onclick="prevModalImage()"><i class="fa-solid fa-chevron-left"></i></button>
+            <img src="" id="modalImg" alt="Mebel" class="modal-main-img">
+            <button class="gallery-nav-btn next" onclick="nextModalImage()"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+          <div class="modal-thumbnails" id="modalThumbnails"></div>
+        </div>
+        <div class="modal-details">
+          <span class="product-category" id="modalCategory">Kategoriya</span>
+          <h3 id="modalTitle">Mebel Nomi</h3>
+          <div class="modal-price" id="modalPrice">0 so'm</div>
+          <div class="modal-specs-box">
+            <div><strong>Nima qilingan:</strong> <p id="modalMaterial"></p></div>
+            <div><strong>Qayerdanligi:</strong> <p id="modalOrigin"></p></div>
+          </div>
+          <button class="btn-primary" id="modalAddToCartBtn" style="width: 100%; justify-content: center;">
+            <i class="fa-solid fa-cart-plus"></i> Savatga qo'shish
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMsg">Amal bajarildi!</span>
+  </div>
+
+  <script src="main.js"></script>
+  <script>
+    function renderFilteredProducts(list) {
+      const grid = document.getElementById('filteredGrid');
+      const countEl = document.getElementById('resultsCount');
+      if (!grid) return;
+
+      countEl.innerText = list.length;
+
+      if (list.length === 0) {
+        grid.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 50px 20px; background: white; border-radius: 12px;">
+            <i class="fa-solid fa-magnifying-glass" style="font-size: 3rem; color: #cbd5e1; margin-bottom: 15px;"></i>
+            <h3>Tanlangan filtr bo'yicha mebel topilmadi</h3>
+            <p style="color: #64748b; margin-top: 5px;">Boshqa parametrlarni tanlab ko'ring.</p>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      list.forEach(p => {
+        const isLiked = isFavorite(p.id);
+        const firstImg = p.images ? p.images[0] : p.img;
+        const imgCount = p.images ? p.images.length : 1;
+
+        html += `
+          <div class="product-card">
+            <div class="product-img-wrapper">
+              <span class="badge-tag ${p.badge || 'badge-new'}">${p.badgeText || 'Sara'}</span>
+              
+              <div class="product-img-count">
+                <i class="fa-solid fa-images"></i> ${imgCount} ta rasm
+              </div>
+
+              <div class="product-top-actions">
+                <button class="like-btn ${isLiked ? 'liked' : ''}" data-product-id="${p.id}" onclick="toggleFavorite(${p.id}, event)" title="Like">
+                  <i class="${isLiked ? 'fa-solid fa-heart' : 'fa-regular fa-heart'}"></i>
+                </button>
+                <button class="quick-view-btn" onclick="openProductModal(${p.id})"><i class="fa-regular fa-eye"></i></button>
+              </div>
+
+              <img src="${firstImg}" alt="${p.name}" class="product-img" onclick="openProductModal(${p.id})" style="cursor: pointer;">
+            </div>
+            <div class="product-body">
+              <span class="product-category">${p.categoryName}</span>
+              <h3 class="product-title">${p.name}</h3>
+              <div class="product-specs">
+                <div class="spec-item">
+                  <i class="fa-solid fa-hammer"></i>
+                  <div><span class="spec-label">Nima qilingan:</span> <span class="spec-val">${p.material}</span></div>
+                </div>
+                <div class="spec-item">
+                  <i class="fa-solid fa-earth-americas"></i>
+                  <div><span class="spec-label">Qayerdanligi:</span> <span class="spec-val">${p.origin}</span></div>
+                </div>
+              </div>
+              <div class="product-footer">
+                <div class="price-wrap">
+                  <span class="old-price">${formatPrice(p.oldPrice)}</span>
+                  <span class="current-price">${formatPrice(p.price)}</span>
+                </div>
+                <button class="add-cart-btn" onclick="addToCart('${p.name}', ${p.price}, '${firstImg}')">
+                  <i class="fa-solid fa-cart-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      grid.innerHTML = html;
+    }
+
+    function applyFilters() {
+      const selectedCat = document.querySelector('input[name="cat"]:checked').value;
+      const selectedOrigin = document.querySelector('input[name="origin"]:checked').value;
+      const selectedMaterial = document.querySelector('input[name="material"]:checked').value;
+
+      const filtered = furnitureData.filter(item => {
+        const matchCat = (selectedCat === 'all') || (item.category === selectedCat);
+        const matchOrigin = (selectedOrigin === 'all') || (item.origin.toLowerCase().includes(selectedOrigin.toLowerCase()));
+        const matchMat = (selectedMaterial === 'all') || (item.material.toLowerCase().includes(selectedMaterial.toLowerCase()));
+        return matchCat && matchOrigin && matchMat;
+      });
+
+      renderFilteredProducts(filtered);
+    }
+
+    function resetFilters() {
+      document.querySelector('input[name="cat"][value="all"]').checked = true;
+      document.querySelector('input[name="origin"][value="all"]').checked = true;
+      document.querySelector('input[name="material"][value="all"]').checked = true;
+      applyFilters();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      applyFilters();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Texnik Yordam & Kafolat - Furni.UZ</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .support-page {
+      padding: 50px 0 80px;
+    }
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 35px;
+    }
+    .support-card {
+      background: var(--white);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .support-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent-light);
+    }
+    .support-icon {
+      width: 55px;
+      height: 55px;
+      border-radius: 14px;
+      background: var(--soft-blue);
+      color: var(--accent-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .support-card h3 {
+      font-size: 1.25rem;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+    .support-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .warranty-banner {
+      margin-top: 50px;
+      background: linear-gradient(135deg, var(--primary-dark), var(--secondary-dark));
+      color: white;
+      padding: 40px;
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .warranty-banner h3 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+    .warranty-banner p {
+      color: #cbd5e1;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container topbar-content">
+      <div class="topbar-info">
+        <div class="topbar-item"><i class="fa-solid fa-phone"></i><span>+998 (71) 200-44-88</span></div>
+        <div class="topbar-item"><i class="fa-solid fa-screwdriver-wrench"></i><span>Servis va Texnik ko'mak xizmati</span></div>
+      </div>
+      <div class="topbar-links">
+        <a href="index.html">Bosh sahifa</a>
+        <a href="boglanish.html">Aloqa</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-couch"></i></div>
+        <div>Furni<span>.UZ</span></div>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Bosh sahifa</a>
+        <a href="filtr.html" class="nav-link"><i class="fa-solid fa-sliders"></i> Filtr & Katalog</a>
+        <a href="sevimlilar.html" class="nav-link"><i class="fa-solid fa-heart"></i> Sevimlilar</a>
+        <a href="boglanish.html" class="nav-link"><i class="fa-solid fa-phone-volume"></i> Bog'lanish</a>
+        <a href="tex-yordam.html" class="nav-link active"><i class="fa-solid fa-circle-question"></i> Tex-yordam</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" onclick="toggleTheme()" title="Tungi rejimni yoqish/o'chirish">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="sevimlilar.html" class="fav-btn" title="Yoqtirgan mebellaringiz">
+          <i class="fa-solid fa-heart"></i>
+          <span>Sevimlilar</span>
+          <span class="fav-count" id="favBadge">0</span>
+        </a>
+        <a href="savat.html" class="cart-btn">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Savat</span>
+          <span class="cart-count" id="cartBadge">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Tex-yordam Asosiy Qismi -->
+  <div class="container support-page">
+    <div class="section-header">
+      <span class="section-tag">Xizmat Ko'rsatish</span>
+      <h2 class="section-title">Texnik Yordam va <span>Kafolat Xizmati</span></h2>
+      <p class="section-desc">Mebellarni o'rnatish, ta'mirlash, ehtiyot qismlar va to'g'ri foydalanish bo'yicha yo'riqnomalar</p>
+    </div>
+
+    <div class="support-grid">
+      <div class="support-card">
+        <div class="support-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>3 Yillik Rasmiy Kafolat</h3>
+        <p>Barcha karkas, yog'och mustahkamligi va mexanizmlariga 36 oygacha to'liq bepul servis kafolati taqdim etiladi.</p>
+      </div>
+
+      <div class="support-card">
+        <div class="support-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+        <h3>Mebel Yig'ish va O'rnatish</h3>
+        <p>Malakali montajchilarimiz xaridingizni yetkazib, qisqa vaqtda to'liq yig'ib va xonadoningizga moslab o'rnatib berishadi.</p>
+      </div>
+
+      <div class="support-card">
+        <div class="support-icon"><i class="fa-solid fa-soap"></i></div>
+        <h3>Mebel Parvarishi Maslahatlari</h3>
+        <p>Baxmal, teri va tabiiy eman mebellariga to'g'ri ishlov berish va ularning uzoq yillar yangiday saqlanish sirlari bo'yicha maslahatlar.</p>
+      </div>
+
+      <div class="support-card">
+        <div class="support-icon"><i class="fa-solid fa-headset"></i></div>
+        <h3>Tezkor 24/7 Maslahat</h3>
+        <p>Telegram orqali fotosurat va o'lchamlarni yuborib, mutaxassislarimizdan bevosita javob oling: @furni_uz_support</p>
+      </div>
+    </div>
+
+    <div class="warranty-banner">
+      <div>
+        <h3>Mebelingizda biror nosozlik yoki savol bormi?</h3>
+        <p>Kafolat talonidagi raqam yoki xarid chekingiz bilan bizga murojaat qiling. Mutaxassislarimiz 24 soat ichida uyizga tashrif buyurishadi.</p>
+      </div>
+      <a href="boglanish.html" class="btn-primary" style="background: var(--accent-light);"><i class="fa-solid fa-phone"></i> Aloqa xizmatiga qo'ng'iroq</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Furni.UZ — Barcha huquqlar himoyalangan.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
